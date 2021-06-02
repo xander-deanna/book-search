@@ -6,11 +6,12 @@ import API from "../utils/API";
 class Search extends React.Component {
     state = {
         value: "",
-        books: []
+        books: [],
+        search: ""
     };
 
     componentDidMount() {
-        this.searchBook();
+        //this.searchBook();
     }
 
     makeBook = bookData => {
@@ -36,11 +37,14 @@ class Search extends React.Component {
         this.setState({
             [name]: value
         });
+        console.log(event.target)
+
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
         this.searchBook(this.state.search);
+        console.log(this.state.search)
     };
 
     render() {
