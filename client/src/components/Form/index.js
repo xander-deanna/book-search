@@ -34,7 +34,7 @@ return (
       <div class="input-group">
           <input
             onChange={props.handleInputChange}
-            //onClick={props.handleFormSubmit}
+            onClick={props.handleFormSubmit}
             value={props.search}
             name="search"
             type="text"
