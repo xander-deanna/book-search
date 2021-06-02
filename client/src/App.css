@@ -23,10 +23,34 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
 .App-link {
   color: #61dafb;
 }
+body {
+  background-color: #d5b1f7;
+  margin: 0;
+  font-family: 'Share Tech Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.card {
+  box-shadow: 8px 8px 0px 0px #00000017;
+  border: 1px solid #282c34;
+  border-radius: 5px;
+}
+
+.img-fluid {
+  margin: 20px;
+}
+
+Form {
+  margin-bottom: 20px;
+  box-shadow: 8px 8px 0px 0px #00000017;
+  border: 1px solid #282c34;
+  border-radius: 5px;
+}
+
 
 @keyframes App-logo-spin {
   from {
@@ -35,4 +59,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
