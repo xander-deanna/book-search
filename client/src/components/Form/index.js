@@ -5,32 +5,6 @@ function Form(props){
 return (
   <div className="container">
     <form>
-    {/* <div className="input-group">
-      <input 
-        onChange={props.handleInputChange}
-        onClick={props.handleFormSubmit}
-        value={props.search}
-        name="search"
-        type="text" 
-        className="form-control" 
-        placeholder="Search a book"
-        id="search"
-      />
-      <div class="input-group-append">
-        <button 
-          onClick={props.handleFormSubmit}
-          className="btn btn-secondary" 
-          type="button">
-          <i class="fa fa-search"></i>
-        </button>
-      </div>
-    </div> */}
-
-
-
-
-
-
       <div class="input-group">
           <input
             onChange={props.handleInputChange}
@@ -49,11 +23,6 @@ return (
           </div>
         </div>
     </form>
-    
-
-
-
-
   </div>
 );
 }
