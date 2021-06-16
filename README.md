@@ -11,7 +11,7 @@ A React-based Google Books Search app.
 ## Description  
 **Book Search** is a React-based MERN stack application that allows users to search for books via the Google Books API. Search results are dynamically rendered in the UI and users have the option to save and/or delete books.
 
-You may view the deployed application [here](link here).
+You may view the deployed application [here](https://quirky-book-search.herokuapp.com/).
 <br>
 <br>
 
