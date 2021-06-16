@@ -1,6 +1,6 @@
 # **Book Search** - [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A new React-based Google Books Search app.
+A React-based Google Books Search app.
 
 ## Table of Contents
 * [Description](#Description)
@@ -9,7 +9,11 @@ A new React-based Google Books Search app.
 
 
 ## Description  
-**Book Search** is a new React-based Google Books Search app, created with React components, helper/util functions, and React lifecycle methods that query and display books based on user searches. The app also uses Node, Express and MongoDB so that users can save books to review or purchase later.
+**Book Search** is a React-based MERN stack application that allows users to search for books via the Google Books API. Search results are dynamically rendered in the UI and users have the option to save and/or delete books.
+
+You may view the deployed application [here](link here).
+<br>
+<br>
 
 
 ## License

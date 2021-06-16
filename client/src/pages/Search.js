@@ -1,66 +1,83 @@
-import React from "react";
-import Form from "../components/Form";
-import Results from "../components/Results";
+import React, { Component } from "react";
+import { Container } from "../components/Grid/Grid";
+import Form from "../components/Form/Form";
 import API from "../utils/API";
+import ResultList from "../components/ResultList/ResultList";
 
-class Search extends React.Component {
+class Home extends Component {
+
     state = {
-        value: "",
         books: [],
         search: ""
     };
 
-    componentDidMount() {
-        //this.searchBook();
-    }
 
-    makeBook = bookData => {
-        return {
-            _id: bookData.id,
-            title: bookData.volumeInfo.title,
-            authors: bookData.volumeInfo.authors,
-            description: bookData.volumeInfo.description,
-            image: bookData.volumeInfo.imageLinks.thumbnail,
-            link: bookData.volumeInfo.previewLink
-        }
-    }
-
-    searchBook = query => {
-        API.getBook(query)
-            .then(res => this.setState({ books: res.data.items.map(bookData => this.makeBook(bookData)) }))
-            .catch(err => console.error(err));
+    // Create function to search for books through Google API
+    searchBooks = () => {
+        API.googleBooks(this.state.search)
+            .then(res => {
+                console.log("This is res.data", res.data.items)
+                this.setState({
+                books: res.data.items,
+                search: ""
+            })})
+            .catch(err => console.log(err));
+            
     };
 
+    // Create function to handle input data
     handleInputChange = event => {
-        const name = event.target.name;
-        const value = event.target.value;
+        const {name, value} = event.target;
         this.setState({
             [name]: value
         });
-        console.log(event.target)
-
     };
 
+    // Create function to handle form data submission
     handleFormSubmit = event => {
         event.preventDefault();
-        this.searchBook(this.state.search);
-        console.log(this.state.search)
+        this.searchBooks();
     };
+
+    saveGoogleBook = currentBook => {
+        console.log("This is the current book", currentBook);
+        API.saveBook({
+            id: currentBook.id,
+            title: currentBook.title,
+            authors: currentBook.authors,
+            description: currentBook.description,
+            image: currentBook.image,
+            link: currentBook.link
+        })
+        .then(res => console.log("Successful POST to DB!", res))
+        .catch(err => console.log("this is the error", err));
+    }
 
     render() {
         return (
             <div>
-                <Form
-                    search={this.state.search}
-                    handleInputChange={this.handleInputChange}
-                    handleFormSubmit={this.handleFormSubmit}
-                />
-                <div className="container">
-                    <Results books={this.state.books} />
-                </div>
+                <Container fluid>
+                    <Form
+                        search={this.state.search}
+                        handleInputChange={this.handleInputChange}
+                        handleFormSubmit={this.handleFormSubmit}
+                    />
+                    
+                    <hr/>
+                    {this.state.books.length ? (
+                        <ResultList 
+                        bookState={this.state.books}
+                        saveGoogleBook={this.saveGoogleBook}>
+                        </ResultList>
+                    ) : (
+                        <div>
+                            <h5 style={{fontStyle: "italic"}}><i class="fas fa-times-circle"></i> No results to display</h5>
+                        </div>
+                    )}
+                </Container>
             </div>
         )
     }
 }
 
-export default Search;
+export default Home
